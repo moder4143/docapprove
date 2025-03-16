@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Approval System - Admin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="nav-logo">Document Approval System - Admin</div>
+      <div class="nav-links">
+        <a href="#" id="documents-link">Documents</a>
+        <a href="#" id="users-link">User Management</a>
+        <a href="#" id="logout-btn" class="logout-btn">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Documents Section -->
+    <div id="documents-section">
+      <h1>Document Management</h1>
+      
+      <div class="tabs">
+        <div class="tab active" data-tab="pending">Pending</div>
+        <div class="tab" data-tab="approved">Approved</div>
+        <div class="tab" data-tab="rejected">Rejected</div>
+      </div>
+      
+      <!-- Pending Documents -->
+      <div id="pending-tab" class="tab-content active">
+        <div class="table-container">
+          <table id="pending-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>User</th>
+                <th>Upload Date</th>
+                <th>File</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- This will be populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Approved Documents -->
+      <div id="approved-tab" class="tab-content">
+        <div class="table-container">
+          <table id="approved-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>User</th>
+                <th>Upload Date</th>
+                <th>File</th>
+                <th>Approval Date</th>
+                <th>Feedback</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- This will be populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Rejected Documents -->
+      <div id="rejected-tab" class="tab-content">
+        <div class="table-container">
+          <table id="rejected-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>User</th>
+                <th>Upload Date</th>
+                <th>File</th>
+                <th>Rejection Date</th>
+                <th>Feedback</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- This will be populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- User Management Section -->
+    <div id="users-section" style="display: none;">
+      <h1>User Management</h1>
+      
+      <div class="upload-form">
+        <h2>Add New User</h2>
+        <div class="form-group">
+          <label for="new-username">Username</label>
+          <input type="text" id="new-username" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <label for="new-password">Password</label>
+          <input type="password" id="new-password" placeholder="Enter password">
+        </div>
+        <div class="form-group">
+          <label for="user-role">Role</label>
+          <select id="user-role">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <button id="add-user-btn" class="btn primary-btn">Add User</button>
+        <div id="user-message" class="message"></div>
+      </div>
+      
+      <div class="table-container">
+        <h2>Existing Users</h2>
+        <table id="users-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Created</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- This will be populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Modal for document actions -->
+    <div id="feedback-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000;">
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px;">
+        <h2 id="modal-title">Document Feedback</h2>
+        <div class="form-group">
+          <label for="feedback">Feedback (Optional)</label>
+          <textarea id="feedback" rows="4" placeholder="Enter feedback for the document"></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+          <button id="cancel-action" class="btn secondary-btn">Cancel</button>
+          <button id="confirm-action" class="btn primary-btn">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const { createClient } = supabase;
+  </script>
+  <script src="admin.js"></script>
+</body>
+</html>

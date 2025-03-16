@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Approval System - Upload</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="nav-logo">Document Approval System</div>
+      <div class="nav-links">
+        <a href="index.html">Upload</a>
+        <a href="status.html">Status</a>
+        <a href="#" id="logout-btn" class="logout-btn">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Upload Document</h1>
+    <div class="upload-form">
+      <div class="form-group">
+        <label for="title">Document Title</label>
+        <input type="text" id="title" placeholder="Enter document title">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="4" placeholder="Enter document description"></textarea>
+      </div>
+      <div class="form-group file-input-container">
+        <label>Document File</label>
+        <div class="file-label">
+          Click here to select a file
+        </div>
+        <input type="file" id="document-file" class="file-input">
+        <div id="file-name" class="file-name"></div>
+      </div>
+      <button id="upload-btn" class="btn primary-btn">Submit Document</button>
+      <div id="upload-message" class="message"></div>
+    </div>
+    
+    <div class="table-container">
+      <h2>Your Recent Uploads</h2>
+      <table id="recent-documents">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Upload Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- This will be populated dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const { createClient } = supabase;
+  </script>
+  <script src="index.js"></script>
+</body>
+</html>
